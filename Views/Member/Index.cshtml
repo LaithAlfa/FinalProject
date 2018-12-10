@@ -1,0 +1,76 @@
+@model IEnumerable<FinalProject.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2></h2>
+
+<h1>
+    <a asp-action="Create" class="text-center">Create New</a>
+</h1>
+
+ <section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1"><a asp-action="Create" class="text-center">Create New</a></h5> 
+<div class="card-deck">
+  <div class="row">
+@foreach (var item in Model) {
+     <!-- Display a div of col-sm-3 containing the card up to n number of times, ie in a loop -->
+     <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+                                    <h4 class="card-title"> @Html.DisplayFor(modelItem => item.Major)</h4>
+                                    <h4 class="card-title"> @Html.DisplayFor(modelItem => item.FirstName)</h4>
+                                    <h4 class="card-title"> @Html.DisplayFor(modelItem => item.LastName)</h4>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Email)</p>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Phone)</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            
+                 <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Member Description</h4>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.MemberDescription)</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+     
+        
+           
+          <!--  <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>-->
+}
+  </div>
+</div>
+    </div>
+ </section>
