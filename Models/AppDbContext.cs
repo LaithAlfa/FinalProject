@@ -12,14 +12,14 @@ namespace FinalProject.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectRoster> ProjectRoster { get; set; }
-        public DbSet<ProjectParticipant> ProjectParticipant {get; set;}
+        
 
         public DbSet<Member> Images { get; set; }
 
         protected override void  OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Member>().ToTable("Member");
+            modelBuilder.Entity<Member>().ToTable("Client");
             modelBuilder.Entity<Client>().ToTable("Client");
             modelBuilder.Entity<Project>().ToTable("Project");
 
@@ -42,6 +42,7 @@ namespace FinalProject.Models
                 .HasOne(pr => pr.ProjectParticipant)
                 .WithMany(pp => pp.Projects)
                 .HasForeignKey(pr => pr.ProjectParticipantID);
+
 
         }
     }
